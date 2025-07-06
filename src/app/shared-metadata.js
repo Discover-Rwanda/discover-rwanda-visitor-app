@@ -1,27 +1,71 @@
 export const sharedMetadata = {
-    title: "Tiny Steps A Day | Actionable steps and daily habits to improve your life",
-    description: "Tiny Steps A Day is a source of actionable steps and daily habits to improve your life. Discover daily habits, tips, and strategies to make small changes that lead to big improvements. Start your journey to a better you today.",
-    keywords: ["tiny steps a day", "tiny steps", "a day", "actionable steps", "improve your life", "personal growth", "self improvement", "daily habits", "tips", "strategies", "small changes", "big improvements", "start your journey to a better you today", "personal growth", "self improvement", "daily habits", "tips", "strategies", "meditation", "mindfulness", "mindfulness meditation", "mindfulness practice", "mindfulness exercises", "mindfulness techniques", "mindfulness tips", "mindfulness strategies", "spirituality", "career guidance", "career development", "career advice", "career tips", "career strategies", "career planning", "love", "the law of one", "the law of attraction", "the law of abundance", "the law of prosperity", "the law of success", "mental health", "life direction", "purpose", "mentorship"],
+    title: "%s - Discover Rwanda | Explore Rwanda's Natural Wonders",
+    titleTemplate: "%s | Discover Rwanda",
+    description: "Discover Rwanda is the number one all in one go-to platform of dedicated to showcasing the incredible experiences, landscapes, and cultural heritage that make Rwanda a unique and unforgettable destination.",
+    keywords: [
+        "Rwanda", "Discover Rwanda", "Tourism", "Tourism in Rwanda", "Rwandan Geography", "Rwanda's beauty", "Rwanda a country of a thousand hills", "Rwanda Nziza", "Akagera National Park", "Kigali", "Kigali City"
+    ],
     icons: {
-        icon: "/favicon.ico",
+        icon: "/DiscoverRwandaLogo.svg",
     },
     openGraph: {
-        title: "Tiny Steps A Day | Actionable steps and daily habits to improve your life",
-        description: "Tiny Steps A Day is a source of actionable steps and daily habits to improve your life. Discover daily habits, tips, and strategies to make small changes that lead to big improvements. Start your journey to a better you today.",
-        images: ["https://www.discoverrwanda.com/cover-image.jpg"],
-        url: "https://www.discoverrwanda.com",
-        siteName: "Tiny Steps A Day",
+        title: "%s - Discover Rwanda | Explore Rwanda's Natural Wonders",
+        description: "Discover Rwanda is the number one all in one go-to platform of dedicated to showcasing the incredible experiences, landscapes, and cultural heritage that make Rwanda a unique and unforgettable destination.",
+        url: "https://www.discoverrwanda.rw",
+        siteName: "Discover Rwanda",
+        images: [
+            {
+                url: "https://www.discoverrwanda.rw/Landscape-of-the-Virunga-Mountains-in-Rwanda.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Discover Rwanda - Explore Rwanda's Natural Wonders",
+            },
+        ],
         locale: "en_US",
         type: "website",
     },
     twitter: {
         card: "summary_large_image",
-        title: "Tiny Steps A Day | Actionable steps and daily habits to improve your life",
-        description: "Tiny Steps A Day is a source of actionable steps and daily habits to improve your life. Discover daily habits, tips, and strategies to make small changes that lead to big improvements. Start your journey to a better you today.",
-        images: ["https://www.discoverrwanda.com/cover-image.jpg"],
+        title: "%s - Discover Rwanda | Explore Rwanda's Natural Wonders",
+        description: "Discover Rwanda is the number one all in one go-to platform of dedicated to showcasing the incredible experiences, landscapes, and cultural heritage that make Rwanda a unique and unforgettable destination.",
+        images: ["https://www.discoverrwanda.rw/Landscape-of-the-Virunga-Mountains-in-Rwanda.jpg"],
+        creator: "@DiscoverRwandaRW",
     },
+    themeColor: "#ffffff",
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: "black-translucent",
+        title: "Discover Rwanda",
+        startupImage: [
+            {
+                url: "/Landscape-of-the-Virunga-Mountains-in-Rwanda.jpg",
+                media: "(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)",
+            },
+        ],
+    },
+    manifest: "/manifest.json",
     alternates: {
-        canonical: "https://www.discoverrwanda.com",
+        canonical: "https://www.discoverrwanda.rw",
+        types: {
+            "application/rss+xml": "/feed.xml",
+            "application/atom+xml": "/feed.atom",
+            "application/json": "/feed.json",
+            "application/ld+json": "/feed.json-ld",
+        },
+    },
+    verification: {
+        google: "google-site-verification=your-google-verification-code",
+        yandex: "yandex-verification: your-yandex-verification-code",
+        me: "your-me-verification-code",
+        other: {
+            "example-verification": "example-verification-code",
+        },
+    },
+    formatDetection: {
+        telephone: false,
+        address: false,
+        email: false,
+        url: false,
     },
     robots: {
         index: true,
@@ -31,5 +75,5 @@ export const sharedMetadata = {
             follow: true,
         },
     },
-    metadataBase: new URL("https://www.discoverrwanda.com"),
+    metadataBase: new URL("https://www.discoverrwanda.rw"),
 }
