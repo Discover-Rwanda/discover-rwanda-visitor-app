@@ -5,6 +5,8 @@ import { Providers } from './providers'
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "sonner";
+import Footer from "@/components/widgets/Footer";
+import Navbar from "@/components/widgets/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,7 +62,7 @@ export const metadata: Metadata = {
   },
   manifest: "/manifest.json",
   alternates: {
-    canonical: "https://www.discoverrwanda.rw", 
+    canonical: "https://www.discoverrwanda.rw",
     types: {
       "application/rss+xml": "/feed.xml",
       "application/atom+xml": "/feed.atom",
@@ -96,7 +98,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
       >
         <Providers>
+          <Navbar />
           {children}
+          <Footer />
           <Toaster />
         </Providers>
         <SpeedInsights />
