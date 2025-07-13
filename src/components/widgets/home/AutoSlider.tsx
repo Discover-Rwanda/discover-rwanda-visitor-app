@@ -24,7 +24,7 @@ const slides: SlideProps[] = [
     icon: <Mountain className="h-12 w-12 text-white" />,
     title: "Explore Rwanda's Natural Wonders",
     description: "From volcanic mountains to pristine lakes, discover breathtaking landscapes and unique wildlife.",
-    backgroundImage: "https://images.unsplash.com/photo-1598377143849-60e151f89653?ixlib=rb-4.0.3&auto=format&fit=crop&w=1900&q=80",
+    backgroundImage: "/images/rwanda-produces-fantastic-tea-and-the-country-s-landscape-is-jewelled-with-rows-of-shiny-green-plantations_Photo-from-Getty-Images.jpg",
     link: "/attractions",
     buttonText: "Discover Attractions"
   },
@@ -32,7 +32,7 @@ const slides: SlideProps[] = [
     icon: <Calendar className="h-12 w-12 text-white" />,
     title: "Experience Cultural Festivals",
     description: "Immerse yourself in Rwanda's vibrant cultural events, celebrations and traditional ceremonies.",
-    backgroundImage: "https://images.unsplash.com/photo-1516426122078-c23e76319801?ixlib=rb-4.0.3&auto=format&fit=crop&w=1900&q=80",
+    backgroundImage: "/images/Nyanza-Traditional-Intore-Dancers-1650x1100.jpg",
     link: "/events",
     buttonText: "Browse Events"
   },
@@ -40,7 +40,7 @@ const slides: SlideProps[] = [
     icon: <Utensils className="h-12 w-12 text-white" />,
     title: "Savor Rwandan Cuisine",
     description: "Experience authentic flavors from traditional dishes to contemporary fusion at top-rated restaurants.",
-    backgroundImage: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1900&q=80",
+    backgroundImage: "/images/rwanda-produces-fantastic-tea-and-the-country-s-landscape-is-jewelled-with-rows-of-shiny-green-plantations_Photo-from-Getty-Images.jpg",
     link: "/dining",
     buttonText: "Find Dining Options"
   },
@@ -48,7 +48,7 @@ const slides: SlideProps[] = [
     icon: <Hotel className="h-12 w-12 text-white" />,
     title: "Luxury to Authentic Stays",
     description: "From 5-star lodges to charming homestays, find the perfect accommodation for your Rwanda adventure.",
-    backgroundImage: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1900&q=80",
+    backgroundImage: "/images/image_750x_64fcd300a2a6e.jpg",
     link: "/stay",
     buttonText: "View Accommodations"
   },
@@ -56,7 +56,7 @@ const slides: SlideProps[] = [
     icon: <Coffee className="h-12 w-12 text-white" />,
     title: "Rwanda's Coffee Experience",
     description: "Tour world-renowned coffee plantations and enjoy tastings of Rwanda's exceptional beans.",
-    backgroundImage: "https://images.unsplash.com/photo-1523242942520-c81fbdf78767?ixlib=rb-4.0.3&auto=format&fit=crop&w=1900&q=80",
+    backgroundImage: "/images/photo-1523242942520-c81fbdf78767.avif",
     link: "/attractions/coffee-tours",
     buttonText: "Discover Coffee Tours"
   },
@@ -64,7 +64,7 @@ const slides: SlideProps[] = [
     icon: <Camera className="h-12 w-12 text-white" />,
     title: "Photography Safaris",
     description: "Capture stunning wildlife and landscapes with specialized photography tours and expert guides.",
-    backgroundImage: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&auto=format&fit=crop&w=1900&q=80",
+    backgroundImage: "/images/photo-1517457373958-b7bdd4587205.avif",
     link: "/attractions/photography-safaris",
     buttonText: "Book a Safari"
   },
@@ -72,7 +72,7 @@ const slides: SlideProps[] = [
     icon: <Map className="h-12 w-12 text-white" />,
     title: "Hiking Adventures",
     description: "Explore Rwanda's scenic trails, from the Congo Nile Trail to the volcanoes of the northwest.",
-    backgroundImage: "https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=1900&q=80",
+    backgroundImage: "/images/photo-1551632811-561732d1e306.avif",
     link: "/attractions/hiking",
     buttonText: "Find Trails"
   },
@@ -80,13 +80,14 @@ const slides: SlideProps[] = [
     icon: <Music className="h-12 w-12 text-white" />,
     title: "Cultural Performances",
     description: "Experience traditional dance, music, and storytelling in authentic Rwandan cultural settings.",
-    backgroundImage: "https://images.unsplash.com/photo-1560021621-3a8a54eda2a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1900&q=80",
+    backgroundImage: "/images/photo-1560021621-3a8a54eda2a9.avif",
     link: "/events/cultural-performances",
     buttonText: "Find Performances"
   }
 ];
 
 const Slide: React.FC<SlideProps> = ({ icon, title, description, backgroundImage, link, buttonText }) => {
+  console.log(backgroundImage);
   return (
     <div className="relative h-screen w-full">
       <div 

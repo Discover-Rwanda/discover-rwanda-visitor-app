@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant light (&:is(.light *));
 
 @theme inline {
   --color-background: var(--background);
@@ -76,6 +78,98 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --rwanda-green: #00833E;
+  --rwanda-blue: #00A3DD;
+  --rwanda-yellow: #FAD201;
+  --rwanda-darkGreen: #006633;
+  --rwanda-darkGreen-10: #0066332c;
+  --rwanda-lightBlue: #8ED8F8;
+  --rwanda-darkBlue: #005B7F;
+  --rwanda-lightYellow: #FEE27F;
+  --rwanda-lightYellow-30: #ffedab;
+  --rwanda-lightGreen-30: #90ffc4;
+}
+
+.bg-rwanda-green {
+  background-color: var(--rwanda-green);
+}
+
+.bg-rwanda-green-10 {
+  background-color: var(--rwanda-darkGreen-10);
+}
+
+.bg-rwanda-blue {
+  background-color: var(--rwanda-blue);
+}
+
+.bg-rwanda-yellow {
+  background-color: var(--rwanda-yellow);
+}
+
+.bg-rwanda-darkBlue {
+  background-color: var(--rwanda-darkBlue);
+}
+
+.bg-rwanda-lightYellow {
+  background-color: var(--rwanda-lightYellow);
+}
+
+.bg-rwanda-darkGreen {
+  background-color: var(--rwanda-darkGreen);
+}
+
+.bg-rwanda-lightGreen-30 {
+  background-color: var(--rwanda-lightGreen-30);
+}
+
+.bg-rwanda-lightYellow-30 {
+  background-color: var(--rwanda-lightYellow-30);
+}
+
+.bg-rwanda-lightBlue {
+  background-color: var(--rwanda-lightBlue);
+}
+
+.bg-rwanda-darkBlue {
+  background-color: var(--rwanda-darkBlue);
+}
+
+.bg-rwanda-darkGreen {
+  background-color: var(--rwanda-darkGreen);
+}
+
+.text-rwanda-blue {
+  color: var(--rwanda-blue);
+}
+
+.text-rwanda-yellow {
+  color: var(--rwanda-yellow);
+}
+
+.text-rwanda-darkBlue {
+  color: var(--rwanda-darkBlue);
+}
+
+.text-rwanda-lightYellow {
+  color: var(--rwanda-lightYellow);
+}
+
+.text-rwanda-darkGreen {
+  color: var(--rwanda-darkGreen);
+}
+
+.text-rwanda-green {
+  color: var(--rwanda-green);
+}
+
+.text-rwanda-lightBlue {
+  color: var(--rwanda-lightBlue);
+}
+
+.text-rwanda-darkBlue {
+  color: var(--rwanda-darkBlue);
 }
 
 .dark {
@@ -110,6 +204,358 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-serif);
+}
+
+.section-divider {
+  height: 4px;
+  background: linear-gradient(90deg, #00833E, #00A3DD, #FAD201);
+}
+
+.hero-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.attractions-card:hover .attractions-card-overlay {
+  opacity: 1;
+}
+
+.attractions-card:hover img {
+  transform: scale(1.05);
+}
+
+/* HTML Content Styles for Rich Text */
+.html-content {
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  color: black;
+}
+
+.html-content h1 {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 2rem 0 1rem 0;
+  border-bottom: 3px solid var(--rwanda-green);
+  padding-bottom: 0.5rem;
+  color: black;
+}
+
+.html-content h2 {
+  font-family: var(--font-serif);
+  font-size: 1.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 1.75rem 0 1rem 0;
+  border-left: 4px solid var(--rwanda-blue);
+  padding-left: 1rem;
+  color: black;
+}
+
+.html-content h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 1.5rem 0 0.75rem 0;
+  color: black;
+}
+
+.html-content h4 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 1.25rem 0 0.5rem 0;
+  color: black;
+}
+
+.html-content h5 {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 1rem 0 0.5rem 0;
+  color: black;
+}
+
+.html-content h6 {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 1rem 0 0.5rem 0;
+  color: black;
+}
+
+.html-content p {
+  margin: 1rem 0;
+  line-height: 1.7;
+  color: black;
+  font-size: 1rem;
+}
+
+.html-content ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  color: black;
+}
+
+.html-content ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  list-style-type: decimal;
+  color: black;
+}
+
+.html-content li {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+  color: black;
+}
+
+.html-content blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--rwanda-green);
+  background-color: var(--rwanda-darkGreen-10);
+  font-style: italic;
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: black;
+}
+
+.html-content blockquote p {
+  margin: 0;
+  color: black;
+}
+
+.html-content a {
+  color: var(--rwanda-blue);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+  color: black;
+}
+
+.html-content a:hover {
+  color: var(--rwanda-darkBlue);
+  text-decoration-color: var(--rwanda-darkBlue);
+}
+
+.html-content strong {
+  font-weight: 600;
+  color: black;
+}
+
+.html-content em {
+  font-style: italic;
+  color: black;
+}
+
+.html-content code {
+  background-color: var(--muted);
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  color: black;
+}
+
+.html-content pre {
+  background-color: var(--muted);
+  color: var(--foreground);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  border: 1px solid var(--border);
+  color: black;
+}
+
+.html-content pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
+.html-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  color: black;
+}
+
+.html-content th {
+  background-color: var(--rwanda-green);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  color: black;
+}
+
+.html-content td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  background-color: var(--background);
+  color: black;
+}
+
+.html-content tr:nth-child(even) td {
+  background-color: var(--muted);
+  color: black;
+}
+
+.html-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.html-content hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rwanda-green), var(--rwanda-blue), var(--rwanda-yellow));
+  margin: 2rem 0;
+  border-radius: 1px;
+  color: black;
+}
+
+.html-content .highlight {
+  background-color: var(--rwanda-lightYellow-30);
+  padding: 0.125rem 0.125rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  color: black;
+}
+
+.html-content .info-box {
+  background-color: var(--rwanda-lightBlue);
+  border: 1px solid var(--rwanda-blue);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  color: black;
+}
+
+.html-content .warning-box {
+  background-color: var(--rwanda-lightYellow-30);
+  border: 1px solid var(--rwanda-yellow);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  color: black;
+}
+
+.html-content .success-box {
+  background-color: var(--rwanda-lightGreen-30);
+  border: 1px solid var(--rwanda-green);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  color: black;
+}
+
+/* Dark mode adjustments for HTML content */
+.dark .html-content {
+  color: white;
+}
+
+.dark .html-content h1,
+.dark .html-content h2,
+.dark .html-content h3,
+.dark .html-content h4,
+.dark .html-content h5,
+.dark .html-content h6 {
+  color: white;
+}
+
+.dark .html-content blockquote {
+  background-color: rgba(0, 131, 62, 0.1);
+  border-left-color: var(--rwanda-green);
+}
+
+.dark .html-content code {
+  background-color: var(--muted);
+  color: white;
+}
+
+.dark .html-content pre {
+  background-color: var(--muted);
+  border-color: var(--border);
+}
+
+.dark .html-content th {
+  background-color: var(--rwanda-green);
+  color: white;
+}
+
+.dark .html-content td {
+  background-color: var(--background);
+  border-color: var(--border);
+}
+
+.dark .html-content tr:nth-child(even) td {
+  background-color: var(--muted);
+}
+
+.dark .html-content .highlight {
+  background-color: rgba(250, 210, 1, 0.2);
+}
+
+.dark .html-content .info-box {
+  background-color: rgba(142, 216, 248, 0.1);
+  border-color: var(--rwanda-blue);
+}
+
+.dark .html-content .warning-box {
+  background-color: rgba(250, 210, 1, 0.1);
+  border-color: var(--rwanda-yellow);
+}
+
+.dark .html-content .success-box {
+  background-color: rgba(144, 255, 196, 0.1);
+  border-color: var(--rwanda-green);
 }
 
 @layer base {

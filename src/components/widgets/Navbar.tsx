@@ -22,38 +22,18 @@ const secondaryLinks = [
   { 
     name: 'Attractions', 
     path: '/attractions',
-    dropdownItems: [
-      { name: 'Natural Wonders', path: '/attractions?category=natural' },
-      { name: 'Cultural Sites', path: '/attractions?category=cultural' },
-      { name: 'Urban Experiences', path: '/attractions?category=urban' },
-    ]
   },
   { 
     name: 'Events', 
-    path: '/events',
-    dropdownItems: [
-      { name: 'Calendar', path: '/events/calendar' },
-      { name: 'Festivals', path: '/events?category=festivals' },
-      { name: 'Cultural Events', path: '/events?category=cultural' },
-    ]
+    path: '/events'
   },
   { 
     name: 'Dining', 
-    path: '/dining',
-    dropdownItems: [
-      { name: 'Restaurants', path: '/dining?type=restaurants' },
-      { name: 'Cafés', path: '/dining?type=cafes' },
-      { name: 'Food Trails', path: '/dining/food-trails' },
-    ]
+    path: '/dining'
   },
   { 
     name: 'Places to Stay', 
     path: '/stay',
-    dropdownItems: [
-      { name: 'Hotels', path: '/stay?type=hotels' },
-      { name: 'Lodges', path: '/stay?type=lodges' },
-      { name: 'Guest Houses', path: '/stay?type=guesthouses' },
-    ]
   },
   { 
     name: 'Plan Your Visit', 
@@ -78,6 +58,19 @@ const Navbar: React.FC = () => {
     setActiveDropdown(activeDropdown === name ? null : name);
   };
 
+  // Helper function to check if a link is active
+  const isLinkActive = (path: string) => {
+    if (path === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(path);
+  };
+
+  // Helper function to check if a secondary link is active
+  const isSecondaryLinkActive = (path: string) => {
+    return pathname.startsWith(path);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -95,9 +88,9 @@ const Navbar: React.FC = () => {
   }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white py-4'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-2' : 'bg-white py-0'}`}>
       {/* Primary Navigation */}
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 pt-2">
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center">
             <span className="font-serif text-2xl font-bold text-gray-800">
@@ -111,7 +104,7 @@ const Navbar: React.FC = () => {
               <Link 
                 key={link.name}
                 href={link.path}
-                className={`text-gray-800 font-medium hover:text-rwanda-green transition-colors ${pathname === link.path ? 'border-b-2 border-rwanda-green' : ''}`}
+                className={`text-gray-800 font-medium hover:text-rwanda-green transition-colors ${isLinkActive(link.path) ? 'border-b-2 border-rwanda-green' : ''}`}
               >
                 {link.name}
               </Link>
@@ -157,13 +150,15 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Secondary Navigation */}
-      <div className="w-full bg-gray-900 border-b border-gray-800">
+      <div className="w-full bg-black border-b border-gray-800 mt-2">
         <div className="container mx-auto px-4">
           <div className="hidden lg:flex justify-center space-x-6 py-2">
             {secondaryLinks.map((link) => (
               <div key={link.name} className="relative group">
                 <div className="text-white font-medium cursor-pointer flex items-center gap-1">
-                  <Link href={link.path}>{link.name}</Link>
+                  <Link href={link.path} className={`${isSecondaryLinkActive(link.path) ? 'bg-gray-800 px-2 py-1 rounded-md' : ''}`}>
+                    {link.name}
+                  </Link>
                   {link.dropdownItems && (
                     <ChevronDown className="h-4 w-4" />
                   )}
@@ -176,7 +171,7 @@ const Navbar: React.FC = () => {
                         <Link
                           key={item.name}
                           href={item.path}
-                          className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
+                          className={`block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white ${isSecondaryLinkActive(item.path) ? 'bg-gray-800 text-white' : ''}`}
                         >
                           {item.name}
                         </Link>
@@ -201,7 +196,7 @@ const Navbar: React.FC = () => {
                   <Link 
                     href={link.path} 
                     onClick={toggleMenu} 
-                    className="block text-base font-medium text-gray-800"
+                    className={`block text-base font-medium text-gray-800 ${isLinkActive(link.path) ? 'border-b-2 border-rwanda-green' : ''}`}
                   >
                     {link.name}
                   </Link>
@@ -217,7 +212,7 @@ const Navbar: React.FC = () => {
                     className="flex justify-between items-center text-white"
                     onClick={() => link.dropdownItems && handleDropdown(link.name)}
                   >
-                    <Link href={link.path} onClick={toggleMenu} className="block text-base font-medium">
+                    <Link href={link.path} onClick={toggleMenu} className={`block text-base font-medium ${isSecondaryLinkActive(link.path) ? 'bg-gray-800 px-2 py-1 rounded-md' : ''}`}>
                       {link.name}
                     </Link>
                     {link.dropdownItems && (
@@ -232,7 +227,7 @@ const Navbar: React.FC = () => {
                           key={item.name}
                           href={item.path}
                           onClick={toggleMenu}
-                          className="block py-1 text-sm text-gray-300 hover:text-white"
+                          className={`block py-1 text-sm text-gray-300 hover:text-white ${isSecondaryLinkActive(item.path) ? 'bg-gray-800 text-white' : ''}`}
                         >
                           {item.name}
                         </Link>

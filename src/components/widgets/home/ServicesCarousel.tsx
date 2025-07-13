@@ -17,10 +17,10 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description }) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-6 h-full flex flex-col items-center text-center">
-      <div className="p-3 bg-rwanda-green/10 rounded-full mb-4">
+      <div className="p-3 bg-rwanda-green-10 rounded-full mb-4">
         {icon}
       </div>
-      <h3 className="font-bold text-lg mb-2">{title}</h3>
+      <h3 className="font-bold text-black text-lg mb-2">{title}</h3>
       <p className="text-gray-600 text-sm">{description}</p>
     </div>
   );
@@ -74,10 +74,10 @@ const ServicesCarousel: React.FC = () => {
     <section className="py-12 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
-          <div className="inline-block bg-rwanda-lightYellow/30 px-4 py-2 rounded-full mb-4">
+          <div className="inline-block bg-rwanda-lightYellow-30 px-4 py-2 rounded-full mb-4">
             <span className="text-rwanda-darkGreen font-medium">Our Services</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Experience Rwanda with Us</h2>
+          <h2 className="text-3xl text-black md:text-4xl font-bold mb-4">Experience Rwanda with Us</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             From wildlife adventures to cultural experiences, we offer a range of services to make your Rwanda journey unforgettable.
           </p>
@@ -102,8 +102,8 @@ const ServicesCarousel: React.FC = () => {
             ))}
           </CarouselContent>
           <div className="flex justify-center mt-8">
-            <CarouselPrevious className="static translate-y-0 mr-2" />
-            <CarouselNext className="static translate-y-0 ml-2" />
+              <CarouselPrevious className="static text-black hover:text-rwanda-green rounded-full p-2 translate-y-0 mr-2" />
+            <CarouselNext className="static text-black hover:text-rwanda-green p-2 translate-y-0 ml-2" />
           </div>
         </Carousel>
       </div>

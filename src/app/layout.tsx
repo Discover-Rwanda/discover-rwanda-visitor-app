@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Discover Rwanda",
     images: [
       {
-        url: "https://wwww.discoverrwanda.rw/Landscape-of-the-Virunga-Mountains-in-Rwanda.jpg",
+        url: "https://wwww.discoverrwanda.rw/images/Landscape-of-the-Virunga-Mountains-in-Rwanda.jpg",
         width: 1200,
         height: 630,
         alt: "Discover Rwanda - Explore Rwanda's Natural Wonders",
@@ -45,20 +45,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "%s - Discover Rwanda | Explore Rwanda's Natural Wonders",
     description: "Discover Rwanda is the number one all in one go-to platform of dedicated to showcasing the incredible experiences, landscapes, and cultural heritage that make Rwanda a unique and unforgettable destination.",
-    images: ["https://www.discoverrwanda.rw/Landscape-of-the-Virunga-Mountains-in-Rwanda.jpg"],
+    images: ["https://www.discoverrwanda.rw/images/Landscape-of-the-Virunga-Mountains-in-Rwanda.jpg"],
     creator: "@DiscoverRwandaRW",
-  },
-  themeColor: "#ffffff",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "black-translucent",
-    title: "Discover Rwanda",
-    startupImage: [
-      {
-        url: "/Landscape-of-the-Virunga-Mountains-in-Rwanda.jpg",
-        media: "(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)",
-      },
-    ],
   },
   manifest: "/manifest.json",
   alternates: {
@@ -93,9 +81,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="light">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-white`}
       >
         <Providers>
           <Navbar />
