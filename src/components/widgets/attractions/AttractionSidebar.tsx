@@ -14,10 +14,11 @@ import {
   Info,
   Share2
 } from 'lucide-react';
-import { Attraction } from '@/data/attractions';
+import { AttractionWithBooking } from '@/lib/types';
+import Link from 'next/link';
 
 interface AttractionSidebarProps {
-  attraction: Attraction;
+  attraction: AttractionWithBooking;
 }
 
 const AttractionSidebar: React.FC<AttractionSidebarProps> = ({ attraction }) => {
@@ -152,9 +153,26 @@ const AttractionSidebar: React.FC<AttractionSidebarProps> = ({ attraction }) => 
 
       {/* Action Buttons */}
       <div className="space-y-3">
-        <Button className="w-full bg-rwanda-green hover:bg-rwanda-darkGreen text-white">
-          Book Your Visit
-        </Button>
+        {attraction.hasBookableServices && attraction.bookingOptions && attraction.bookingOptions.length > 0 ? (
+          <div className="space-y-2">
+            <h3 className="font-medium text-gray-900 mb-3">Available Experiences</h3>
+            {attraction.bookingOptions.map((option) => (
+              <Link
+                key={option.id}
+                href={`/booking?type=attraction&id=${attraction.slug}&option=${option.id}`}
+                className="block"
+              >
+                <Button className="w-full bg-rwanda-green hover:bg-rwanda-darkGreen text-white mb-2">
+                  Book {option.name}
+                </Button>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <Button className="w-full bg-gray-400 cursor-not-allowed" disabled>
+            No Booking Available
+          </Button>
+        )}
         
         <Button variant="outline" className="w-full text-rwanda-green border-rwanda-green border-2 hover:bg-rwanda-green hover:text-white">
           <Share2 className="h-4 w-4 mr-2" />

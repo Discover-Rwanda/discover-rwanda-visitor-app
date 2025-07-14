@@ -1,7 +1,8 @@
 import React, { Suspense } from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { findAttractionBySlug, getAttractions } from '@/data/attractions';
+import { getAttractionWithBooking, getAttractionsWithBooking } from '@/data/attractions';
+import { AttractionWithBooking } from '@/lib/types';
 import AttractionDetailHero from '@/components/widgets/attractions/AttractionDetailHero';
 import AttractionMainContent from '@/components/widgets/attractions/AttractionMainContent';
 import AttractionSidebar from '@/components/widgets/attractions/AttractionSidebar';
@@ -10,7 +11,7 @@ import ListPageLoader from '@/components/ui/list-page-loader';
 
 // Generate static params for all attractions
 export async function generateStaticParams() {
-  const attractions = await getAttractions();
+  const attractions = await getAttractionsWithBooking();
   return attractions.map((attraction) => ({
     slug: attraction.slug,
   }));
@@ -23,7 +24,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }> 
 }): Promise<Metadata> {
   const { slug } = await params;
-  const attraction = await findAttractionBySlug(slug);
+  const attraction = await getAttractionWithBooking(slug);
 
   if (!attraction) {
     return {
@@ -68,15 +69,15 @@ export default async function AttractionDetailPage({
   params: Promise<{ slug: string }> 
 }) {
   const { slug } = await params;
-  const attraction = await findAttractionBySlug(slug);
+  const attraction = await getAttractionWithBooking(slug);
 
   if (!attraction) {
     notFound();
   }
 
   // Get related attractions (same category or location, excluding current)
-  const relatedAttractions = (await getAttractions())
-    .filter(a => 
+  const relatedAttractions = (await getAttractionsWithBooking())
+    .filter((a: AttractionWithBooking) => 
       a.id !== attraction.id && 
       (a.category === attraction.category || a.location === attraction.location)
     )

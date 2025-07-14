@@ -41,7 +41,7 @@ const AttractionMainContent: React.FC<AttractionMainContentProps> = ({ attractio
     <div className="space-y-8">
       {/* Description */}
       <section>
-        <h2 className="text-2xl font-bold mb-4 text-gray-900">About {attraction.name}</h2>
+        {/* <h2 className="text-2xl font-bold mb-4 text-gray-900">About {attraction.name}</h2> */}
         <div 
           className="html-content text-gray-700 leading-relaxed text-lg" 
           dangerouslySetInnerHTML={{ __html: attraction.description }} 

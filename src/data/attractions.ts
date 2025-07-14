@@ -1,4 +1,6 @@
 import { staticDestinations } from './destinations';
+import { hasBookableServices, getBookingOptions } from './booking-options';
+import { AttractionWithBooking } from '@/lib/types';
 
 // Enhanced Attraction interface with all necessary fields
 export interface Attraction {
@@ -1452,6 +1454,28 @@ export function getShowcaseAttractions() {
 export const getAttractions = async () => {
     await new Promise(resolve => setTimeout(resolve, 1000));
     return attractions;
+}
+
+// Function to get attractions with booking information
+export const getAttractionsWithBooking = async (): Promise<AttractionWithBooking[]> => {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    return attractions.map(attraction => ({
+        ...attraction,
+        hasBookableServices: hasBookableServices(attraction.slug),
+        bookingOptions: getBookingOptions(attraction.slug)
+    }));
+}
+
+// Function to get a single attraction with booking information
+export const getAttractionWithBooking = async (slug: string): Promise<AttractionWithBooking | undefined> => {
+    const attraction = attractions.find(a => a.slug === slug);
+    if (!attraction) return undefined;
+    
+    return {
+        ...attraction,
+        hasBookableServices: hasBookableServices(attraction.slug),
+        bookingOptions: getBookingOptions(attraction.slug)
+    };
 }
 
 export async function findAttractionBySlug(slug: string) {
