@@ -1,4 +1,4 @@
-import AutoSlider from '@/components/widgets/home/AutoSlider';
+// import AutoSlider from '@/components/widgets/home/AutoSlider';
 import FeaturedSection from '@/components/widgets/home/FeaturedSection';
 import DestinationSection from '@/components/widgets/home/DestinationSection';
 import NewsletterSection from '@/components/widgets/home/NewsletterSection';
@@ -13,6 +13,7 @@ import { upcomingEvents } from '@/data/events';
 import { featuredExperiences } from '@/data/experiences';
 import { testimonials } from '@/data/testimonials';
 import { getShowcaseAttractions } from '@/data/attractions';
+import AutoSliderV2 from '@/components/widgets/home/AutoSliderV2';
 
 export const generateMetadata = async (): Promise<Metadata> => ({
   title: "Discover Rwanda | Explore the Land of a Thousand Hills",
@@ -74,7 +75,8 @@ export default function HomePage() {
           })
         }}
       />
-      <AutoSlider />
+      {/* <AutoSlider /> */}
+      <AutoSliderV2 />
       <ServicesCarousel />
       <section className="bg-white py-12">
         <div className="container mx-auto px-4 text-center">

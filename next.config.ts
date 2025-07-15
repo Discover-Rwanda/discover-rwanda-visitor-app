@@ -63,7 +63,27 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
-    ]
+    ],
+    // Ensure local images work properly
+    unoptimized: false,
+    // Add debugging for image loading
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+  },
+  // Ensure proper static file serving
+  async headers() {
+    return [
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
   },
 };
 

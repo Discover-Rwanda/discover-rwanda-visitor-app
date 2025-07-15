@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { Mountain, Coffee, Utensils, Calendar, Map, Hotel, Camera, Music, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 interface SlideProps {
   icon: React.ReactNode;
@@ -24,7 +25,7 @@ const slides: SlideProps[] = [
     icon: <Mountain className="h-12 w-12 text-white" />,
     title: "Explore Rwanda's Natural Wonders",
     description: "From volcanic mountains to pristine lakes, discover breathtaking landscapes and unique wildlife.",
-    backgroundImage: "/images/rwanda-produces-fantastic-tea-and-the-country-s-landscape-is-jewelled-with-rows-of-shiny-green-plantations_Photo-from-Getty-Images.jpg",
+    backgroundImage: "/images/Visit-Rwanda-Crater-Lake-Volcanoes-e1533416621808-1920x1267.jpg",
     link: "/attractions",
     buttonText: "Discover Attractions"
   },
@@ -40,7 +41,7 @@ const slides: SlideProps[] = [
     icon: <Utensils className="h-12 w-12 text-white" />,
     title: "Savor Rwandan Cuisine",
     description: "Experience authentic flavors from traditional dishes to contemporary fusion at top-rated restaurants.",
-    backgroundImage: "/images/rwanda-produces-fantastic-tea-and-the-country-s-landscape-is-jewelled-with-rows-of-shiny-green-plantations_Photo-from-Getty-Images.jpg",
+    backgroundImage: "/images/Foods-to-Try-in-Rwanda.jpg",
     link: "/dining",
     buttonText: "Find Dining Options"
   },
@@ -48,7 +49,7 @@ const slides: SlideProps[] = [
     icon: <Hotel className="h-12 w-12 text-white" />,
     title: "Luxury to Authentic Stays",
     description: "From 5-star lodges to charming homestays, find the perfect accommodation for your Rwanda adventure.",
-    backgroundImage: "/images/image_750x_64fcd300a2a6e.jpg",
+    backgroundImage: "/images/kigali-serena-hotel.jpg",
     link: "/stay",
     buttonText: "View Accommodations"
   },
@@ -56,7 +57,7 @@ const slides: SlideProps[] = [
     icon: <Coffee className="h-12 w-12 text-white" />,
     title: "Rwanda's Coffee Experience",
     description: "Tour world-renowned coffee plantations and enjoy tastings of Rwanda's exceptional beans.",
-    backgroundImage: "/images/photo-1523242942520-c81fbdf78767.avif",
+    backgroundImage: "/images/rwandan-coffee_Image-from-getty-images.avif",
     link: "/attractions/coffee-tours",
     buttonText: "Discover Coffee Tours"
   },
@@ -64,7 +65,7 @@ const slides: SlideProps[] = [
     icon: <Camera className="h-12 w-12 text-white" />,
     title: "Photography Safaris",
     description: "Capture stunning wildlife and landscapes with specialized photography tours and expert guides.",
-    backgroundImage: "/images/photo-1517457373958-b7bdd4587205.avif",
+    backgroundImage: "/images/giraffe-at-akagera-national-park_Photo-from-Getty-Images.jpg",
     link: "/attractions/photography-safaris",
     buttonText: "Book a Safari"
   },
@@ -80,22 +81,61 @@ const slides: SlideProps[] = [
     icon: <Music className="h-12 w-12 text-white" />,
     title: "Cultural Performances",
     description: "Experience traditional dance, music, and storytelling in authentic Rwandan cultural settings.",
-    backgroundImage: "/images/photo-1560021621-3a8a54eda2a9.avif",
+    backgroundImage: "/images/IbyIwacu-Cultural-Village.jpg",
     link: "/events/cultural-performances",
     buttonText: "Find Performances"
   }
 ];
 
 const Slide: React.FC<SlideProps> = ({ icon, title, description, backgroundImage, link, buttonText }) => {
-  console.log(backgroundImage);
+  const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+    console.error(`Failed to load image: ${backgroundImage}. Ensure the file exists in public/images or verify the URL.`);
+  };
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+    console.log(`Successfully loaded image: ${backgroundImage}`);
+  };
+
+  // Debug: Log the image path on component mount
+  useEffect(() => {
+    console.log(`Attempting to load image: ${backgroundImage}`);
+  }, [backgroundImage]);
+
   return (
     <div className="relative h-screen w-full">
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${backgroundImage})` }}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      </div>
+      {!imageError ? (
+        <>
+          <Image
+            src={backgroundImage}
+            alt={`${title} background`}
+            fill
+            className={`object-cover transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            onError={handleImageError}
+            onLoad={handleImageLoad}
+            priority={title === slides[0].title}
+            loading={title !== slides[0].title ? "lazy" : undefined}
+            sizes="100vw"
+            quality={90}
+          />
+          {!imageLoaded && (
+            <div className="absolute inset-0 bg-gradient-to-br from-rwanda-green via-rwanda-darkGreen to-blue-600 animate-pulse">
+              <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+            </div>
+          )}
+        </>
+      ) : (
+        <div 
+          className="absolute inset-0 bg-gradient-to-br from-rwanda-green via-rwanda-darkGreen to-blue-600"
+        >
+          <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        </div>
+      )}
+      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       
       <div className="container mx-auto px-4 h-full flex items-center relative z-10">
         <div className="max-w-3xl animate-fade-in">
@@ -138,24 +178,24 @@ const AutoSlider: React.FC = () => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    if (!api) return;
+    if (!api) {
+      console.warn("Carousel API not initialized. Ensure @/components/ui/carousel is correctly set up.");
+      return;
+    }
 
-    // Set up auto sliding
     const interval = setInterval(() => {
       api.scrollNext();
     }, 6000);
 
-    // Update current index when slide changes
     const handleSelect = () => {
       setCurrent(api.selectedScrollSnap());
     };
 
     api.on('select', handleSelect);
 
-    // Clean up
     return () => {
       clearInterval(interval);
-      api?.off('select', handleSelect);
+      api.off('select', handleSelect);
     };
   }, [api]);
 
@@ -178,7 +218,6 @@ const AutoSlider: React.FC = () => {
         </CarouselContent>
       </Carousel>
       
-      {/* Slide indicators */}
       <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-2">
         {slides.map((_, index) => (
           <button
@@ -187,7 +226,8 @@ const AutoSlider: React.FC = () => {
               current === index ? "w-8 bg-white" : "w-2 bg-white/50"
             }`}
             onClick={() => api?.scrollTo(index)}
-            aria-label={`Go to slide ${index + 1}`}
+            aria-label={`Go to slide ${index + 1} of ${slides.length}`}
+            aria-current={current === index ? "true" : "false"}
           />
         ))}
       </div>
@@ -195,4 +235,4 @@ const AutoSlider: React.FC = () => {
   );
 };
 
-export default AutoSlider; 
+export default AutoSlider;
