@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, RotateCw } from 'lucide-react';
-import { Button } from './button';
+import { Button } from '@/components/ui/button';
 
 interface ImageViewerProps {
   images: string[];

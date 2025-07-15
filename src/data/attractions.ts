@@ -203,6 +203,8 @@ export const attractions: Attraction[] = [
             <h3>Chimpanzee Trekking</h3>
             <p>Nyungwe is famous for its chimpanzee trekking experiences. Visitors can track and observe these fascinating primates in their natural habitat, learning about their behavior and social structures from expert guides.</p>
             
+
+            
             <h3>Biodiversity Hotspot</h3>
             <p>The forest is home to over 1,000 plant species, 85 mammal species, 310 bird species, and 32 amphibian species. It's particularly known for its 13 species of primates, making it one of the most important primate habitats in Africa.</p>
         `,

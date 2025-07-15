@@ -2,7 +2,7 @@ import React from 'react';
 import { MapPin } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+// import { Button } from '@/components/ui/button';
 import { attractions } from '@/data/attractions';
 
 interface AttractionCardProps {
@@ -60,13 +60,13 @@ const AttractionCard: React.FC<AttractionCardProps> = ({ attraction }) => {
                   >
                       View Details
                   </Link>
-                  <Button
+                  {/* <Button
                       variant="outline"
                       size="sm"
                       className="text-rwanda-green border-rwanda-green hover:bg-rwanda-green/10"
                   >
                       Add to Itinerary
-                  </Button>
+                  </Button> */}
               </div>
           </div>
       </div>

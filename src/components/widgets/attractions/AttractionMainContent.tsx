@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Clock, Star, Users, Calendar, Maximize2 } from 'lucide-react';
+import { Clock, Star, Users, Calendar } from 'lucide-react';
 import { Attraction, Review } from '@/data/attractions';
 import ReviewForm from './ReviewForm';
-import ImageViewer from '@/components/ui/image-viewer';
+import ImageGallery from '@/components/ui/image-gallery';
 
 interface AttractionMainContentProps {
   attraction: Attraction;
@@ -23,25 +23,15 @@ const AttractionMainContent: React.FC<AttractionMainContentProps> = ({ attractio
 
   // Local state for reviews
   const [reviews, setReviews] = useState<Review[]>(attraction.reviews);
-  
-  // Image viewer state
-  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   const handleAddReview = (review: Review) => {
     setReviews(prev => [review, ...prev]);
-  };
-
-  const handleImageClick = (index: number) => {
-    setSelectedImageIndex(index);
-    setIsImageViewerOpen(true);
   };
 
   return (
     <div className="space-y-8">
       {/* Description */}
       <section>
-        {/* <h2 className="text-2xl font-bold mb-4 text-gray-900">About {attraction.name}</h2> */}
         <div 
           className="html-content text-gray-700 leading-relaxed text-lg" 
           dangerouslySetInnerHTML={{ __html: attraction.description }} 
@@ -49,35 +39,13 @@ const AttractionMainContent: React.FC<AttractionMainContentProps> = ({ attractio
       </section>
 
       {/* Image Gallery */}
-      <section>
-        <h3 className="text-xl font-semibold mb-4 text-gray-900">Gallery</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {attractionDetails.images.map((image, index) => (
-            <div key={index} className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
-              <Image
-                src={image}
-                alt={`${attraction.name} - Image ${index + 1}`}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                onClick={() => handleImageClick(index)}
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                <Maximize2 className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* Image Viewer */}
-        <ImageViewer
-          images={attractionDetails.images}
-          initialIndex={selectedImageIndex}
-          isOpen={isImageViewerOpen}
-          onClose={() => setIsImageViewerOpen(false)}
-          title={attraction.name}
-        />
-      </section>
+      <ImageGallery
+        images={attractionDetails.images}
+        title="Gallery"
+        columns={2}
+        aspectRatio="auto"
+        showTitle={true}
+      />
 
       {/* Practical Information */}
       <section>
