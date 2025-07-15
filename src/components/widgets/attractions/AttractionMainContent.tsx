@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { Clock, Star, Users, Calendar } from 'lucide-react';
 import { Attraction, Review } from '@/data/attractions';
 import ReviewForm from './ReviewForm';
@@ -9,7 +8,7 @@ import ImageGallery from '@/components/ui/image-gallery';
 
 interface AttractionMainContentProps {
   attraction: Attraction;
-}
+} 
 
 const AttractionMainContent: React.FC<AttractionMainContentProps> = ({ attraction }) => {
   // Mock additional data for the attraction
