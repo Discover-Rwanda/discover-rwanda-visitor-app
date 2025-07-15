@@ -230,6 +230,10 @@ h1, h2, h3, h4, h5 {
   font-family: var(--font-serif);
 }
 
+.html-content h1, .html-content h2, .html-content h3, .html-content h4, .html-content h5, .html-content h6 {
+  color: black !important;
+}
+
 .section-divider {
   height: 4px;
   background: linear-gradient(90deg, #00833E, #00A3DD, #FAD201);
@@ -489,7 +493,7 @@ h1, h2, h3, h4, h5 {
   background-color: var(--rwanda-lightBlue);
   border: 1px solid var(--rwanda-blue);
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 0.1rem 1rem;
   margin: 1rem 0;
   color: black;
 }
@@ -498,7 +502,7 @@ h1, h2, h3, h4, h5 {
   background-color: var(--rwanda-lightYellow-30);
   border: 1px solid var(--rwanda-yellow);
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 0.1rem 1rem;
   margin: 1rem 0;
   color: black;
 }
@@ -507,7 +511,7 @@ h1, h2, h3, h4, h5 {
   background-color: var(--rwanda-lightGreen-30);
   border: 1px solid var(--rwanda-green);
   border-radius: 0.5rem;
-  padding: 1rem;
+  padding: 0.1rem 1rem;
   margin: 1rem 0;
   color: black;
 }

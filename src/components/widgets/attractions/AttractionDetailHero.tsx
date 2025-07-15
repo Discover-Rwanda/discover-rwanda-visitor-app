@@ -2,8 +2,10 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { MapPin, Tag } from 'lucide-react';
+import { ArrowLeft, MapPin, Tag } from 'lucide-react';
+import Link from 'next/link';
 import { Attraction } from '@/data/attractions';
+import { Button } from '@/components/ui/button';
 
 interface AttractionDetailHeroProps {
   attraction: Attraction;
@@ -11,13 +13,13 @@ interface AttractionDetailHeroProps {
 
 const AttractionDetailHero: React.FC<AttractionDetailHeroProps> = ({ attraction }) => {
   return (
-    <div className="relative h-96 md:h-[500px] overflow-hidden">
+    <div className="relative h-96 md:h-[600px] overflow-hidden">
       {/* Background Image */}
       <Image
         src={attraction.image}
         alt={attraction.name}
         fill
-        className="object-cover"
+        className="object-top object-cover"
         priority
         sizes="100vw"
       />
@@ -28,6 +30,12 @@ const AttractionDetailHero: React.FC<AttractionDetailHeroProps> = ({ attraction 
       {/* Content */}
       <div className="absolute inset-0 flex items-center">
         <div className="container mx-auto px-4">
+          <Button variant="outline" className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-20" asChild>
+            <Link href="/attractions">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Attractions
+            </Link>
+          </Button>
           <div className="max-w-4xl">
             {/* Category Badge */}
             <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
