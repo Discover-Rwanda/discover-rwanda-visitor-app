@@ -92,7 +92,7 @@ const ServicesCarousel: React.FC = () => {
         >
           <CarouselContent className="-ml-2 md:-ml-4">
             {services.map((service, index) => (
-              <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
+              <CarouselItem key={index} className="pl-2 md:pl-4 py-4 md:basis-1/2 lg:basis-1/3">
                 <ServiceCard 
                   icon={service.icon}
                   title={service.title}
